@@ -59,7 +59,7 @@ def create_app() -> Flask:
                     "GET /health": "Liveness check",
                     "GET /api/cache": "All cached validators + period totals",
                     "GET /api/rewards/<validator_id>": "One validator (index or pubkey)",
-                    "GET /api/rewards?validators=1,2,3": "One or more validators",
+                    "GET /api/rewards?validators=847291,1203847": "One or more validators",
                     "POST /api/rewards": 'JSON body: {"validators":[...],"refresh":false}',
                 },
                 "query_params": {

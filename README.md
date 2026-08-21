@@ -17,7 +17,7 @@ API: `http://localhost:5001`
 
 ```bash
 curl http://localhost:5001/health
-curl "http://localhost:5001/api/rewards?validators=1629852,1633531"
+curl "http://localhost:5001/api/rewards?validators=847291,1203847"
 ```
 
 Stop with `docker compose down`. Logs: `docker compose logs -f`.
@@ -26,7 +26,7 @@ Stop with `docker compose down`. Logs: `docker compose logs -f`.
 
 | | |
 |--|--|
-| `GET /api/rewards?validators=1,2` | fetch / return from cache |
+| `GET /api/rewards?validators=847291,1203847` | fetch / return from cache |
 | `GET /api/rewards/<id>` | one validator |
 | `POST /api/rewards` | `{"validators":["1","2"],"refresh":true}` |
 | `GET /api/cache` | everything in the cache |
@@ -41,7 +41,7 @@ First fetch for a new validator can take a couple minutes. Later calls hit the c
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 python app.py
-# or: python validator_rewards.py 1629852
+# or: python validator_rewards.py 847291
 ```
 
 Needs `curl` on the PATH.

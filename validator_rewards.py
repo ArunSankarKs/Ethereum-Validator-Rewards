@@ -17,10 +17,10 @@ Results are cached in rewards_cache.json (events appended by validator index).
 Already-cached validators with event history are skipped unless --refresh.
 
 Examples:
-  python3 validator_rewards.py 1629852
-  python3 validator_rewards.py 1633531
+  python3 validator_rewards.py 847291
+  python3 validator_rewards.py 1203847
   python3 validator_rewards.py --show-cache
-  python3 validator_rewards.py 1629852 --refresh
+  python3 validator_rewards.py 847291 --refresh
 """
 
 from __future__ import annotations
