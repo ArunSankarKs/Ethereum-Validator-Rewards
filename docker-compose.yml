@@ -1,0 +1,16 @@
+services:
+  validator-rewards:
+    build: .
+    image: validator-rewards:latest
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./data:/app/data
+    environment:
+      HOST: "0.0.0.0"
+      PORT: "5001"
+      WAITRESS_THREADS: "8"
+      WAITRESS_CHANNEL_TIMEOUT: "300"
+      RELAY_MAX_WORKERS: "8"
+      REWARDS_CACHE: "/app/data/rewards_cache.json"
+    restart: unless-stopped
