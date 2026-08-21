@@ -18,13 +18,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app.py validator_rewards.py ./
-
-RUN useradd --create-home --uid 10001 appuser \
-    && mkdir -p /app/data \
-    && chown -R appuser:appuser /app
-
-USER appuser
+COPY app.py validator_rewards.py docker-entrypoint.sh ./
+RUN chmod +x docker-entrypoint.sh \
+    && mkdir -p /app/data
 
 VOLUME ["/app/data"]
 EXPOSE 5001
@@ -32,4 +28,5 @@ EXPOSE 5001
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
     CMD curl -fsS "http://127.0.0.1:${PORT}/health" || exit 1
 
+ENTRYPOINT ["./docker-entrypoint.sh"]
 CMD ["python", "app.py"]
